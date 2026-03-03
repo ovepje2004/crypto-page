@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212; 
-            color: #e0e0e0; 
+            background-color: #121212;
+            color: #e0e0e0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -18,33 +18,21 @@
             padding: 20px;
         }
 
-        /* 제목 스타일 */
-        h1 {
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
+        h1 { color: #ffffff; margin-bottom: 10px; }
+        p { color: #b0b0b0; margin-bottom: 30px; font-size: 1.1em; }
 
-        /* 부제목 스타일 */
-        p {
-            color: #b0b0b0;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-
-        /* 테이블 기본 스타일 */
         table {
             border-collapse: collapse;
             width: 100%;
-            max-width: 600px; 
-            background-color: #1e1e1e; 
+            max-width: 600px;
+            background-color: #1e1e1e;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* 테이블 헤더(Th) 스타일 */
         th {
-            background-color: #333333; 
+            background-color: #333333;
             color: #ffffff;
             font-weight: 600;
             text-transform: uppercase;
@@ -53,46 +41,27 @@
             text-align: left;
         }
 
-        /* 테이블 셀(Td) 스타일 */
         td {
             padding: 15px;
             border-bottom: 1px solid #333333;
         }
 
-        th:nth-child(1), td:nth-child(1) { text-align: left; } /* Coin */
-        th:nth-child(2), td:nth-child(2) { text-align: left; } /* Price */
-        th:nth-child(3), td:nth-child(3) { text-align: left; } /* 24h Change */
+        tr:last-child td { border-bottom: none; }
 
-        /* 마우스 호버 효과 */
+        .price { font-weight: bold; color: #81c784; }
+
+        .positive { color: #4caf50; font-weight: bold; }
+        .negative { color: #ef5350; font-weight: bold; }
+
         tr:hover td {
-            background-color: #2c2c2c; 
+            background-color: #2c2c2c;
             cursor: pointer;
         }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        td:nth-child(2) {
-            font-weight: bold;
-            color: #81c784; 
-        }
-        tr:nth-child(1) td:nth-child(3) {
-            color: #4caf50; 
-            font-weight: bold;
-        }
-        tr:nth-child(2) td:nth-child(3) {
-            color: #ef5350;
-            font-weight: bold;
-        }
-
-        @media (max-width: 600px) {
-            table {
-                font-size: 0.9em;
-            }
-            th, td {
-                padding: 10px;
-            }
+        #last-updated {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #888;
         }
     </style>
 </head>
@@ -112,16 +81,20 @@
         <tbody>
             <tr>
                 <td>Bitcoin (BTC)</td>
-                <td>$64,000</td>
-                <td>+1.2%</td>
+                <td id="btc-price" class="price">Loading...</td>
+                <td id="btc-change">Loading...</td>
             </tr>
             <tr>
                 <td>Ethereum (ETH)</td>
-                <td>$3,500</td>
-                <td>-0.5%</td>
+                <td id="eth-price" class="price">Loading...</td>
+                <td id="eth-change">Loading...</td>
             </tr>
         </tbody>
     </table>
+
+    <div id="last-updated"></div>
+
+    <script src="update.js"></script>
 
 </body>
 </html>
